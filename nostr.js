@@ -13,6 +13,16 @@ inputPubkey.addEventListener('input', function() {
         getFollower().catch(console.error);
 });
 
+async function nostrLogin() {
+    let publicKey = await window.nostr.getPublicKey();
+    console.log("Public Key: " + publicKey);
+    let publicKeyEncoded = window.NostrTools.nip19.npubEncode(publicKey);
+    pubkey = publicKey;
+    // window.localStorage.setItem("userPubkey", userPubkey);
+    // nostrGetLoginInfo();
+    return publicKey;
+}
+
 async function getFollower() {
         ulCardList.innerHTML = '';
         counter = 0;
